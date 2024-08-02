@@ -8,10 +8,11 @@ from aiogram.types import Message
 from funcshional import handlers
 dp = Dispatcher()
 
+from config_reader import config
 
 
 handlers.reg_handler(dp)
-bot = Bot(token=TOKEN)
+bot = Bot(token=config.bot_token.get_secret_value())
 
 
 
@@ -25,7 +26,7 @@ async def main():
 
 
 if __name__ == "__main__":
-    
+    logging.basicConfig(level=logging.INFO)
     try:
         asyncio.run(main())
         
